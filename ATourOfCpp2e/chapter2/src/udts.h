@@ -61,5 +61,18 @@ class Vector3 {
     int sz;
 };
 
+/*
+class Vector4 {
+  public:
+    Vector4(int s, Type x):elem{new Value[s]}, sz{s}, t{x} { }
+    auto& operator[](int);
+    int size() { return sz; }
+    int type() { return t; }
+  private:
+    Type t;
+    Value* elem; // use elem.p if t==ptr; use elem.i if t==num
+    int sz;
+};
+*/
 
 #endif
