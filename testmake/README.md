@@ -1,6 +1,6 @@
 # testmake
 
-Template for making C++ project. Ref: http://www.cplusplus.com/articles/jTbCpfjN/
+Template for making C++ project. Ref: https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html
 
 Make knows how to construct a program using a cpp file:
 ```bash
