@@ -1,0 +1,17 @@
+# Basic Makefile Example
+
+# target: dependencies
+# 	action
+
+main: main.o include.o
+	g++ main.o include.o -o main
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+include.o: include.cpp include.h
+	g++ -c include.cpp
+
+# Remove all object and output files
+clean:
+	rm *.o main
