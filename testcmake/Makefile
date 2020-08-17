@@ -14,7 +14,7 @@ LFLAGS = -L../lib
 
 # define any libraries to link into executable:
 # For (libx.so or libx.a) use the -lx
-#LIBS = -lx
+LIBS =
 
 # define the C++ source files:
 SRCS = main.cpp include.cpp
@@ -34,7 +34,6 @@ TARGET = main
 all: $(TARGET)
 	@echo Simple compiler named mycc has been compiled
 
-# compiles the files to generate the executable defined by TARGET
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) $(OBJS) $(LFLAGS) $(LIBS)
 

@@ -6,7 +6,7 @@ INCLUDES = -I../include
 
 LFLAGS = -L../lib
 
-LIBS =
+#LIBS =
 
 SRCS = main.cpp include.cpp
 
