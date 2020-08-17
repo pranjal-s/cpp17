@@ -18,7 +18,8 @@ class Vector {
   private:
     double* elem;
     int sz;
-}; // The Vector class creates an object that can have multiple elements at different times during program execution
+}; // The Vector class creates an object that can have multiple elements
+   // (however still not supporting different size at different times during run)
 
 // Multiple data types in a single structure
 struct Entry {
