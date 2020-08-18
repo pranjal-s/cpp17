@@ -1,4 +1,5 @@
 // A simple program to verify installation of CGAL-5.0.3
+// Source: https://doc.cgal.org/latest/Manual/tutorial_hello_world.html
 
 #include <iostream>
 #include <CGAL/Simple_cartesian.h>
