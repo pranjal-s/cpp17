@@ -24,14 +24,22 @@ Note
 """
 import numpy as np
 import open3d as o3d
-print("Testing IO for point cloud ...")
-xyzn = o3d.io.read_point_cloud("data/oni_CGAL.xyz", format='xyzn')
-print(xyzn)
+print("Testing IO for meshes ...")
+offmesh = o3d.io.read_triangle_mesh("data/out_CGAL.off")
+print(offmesh)
 print("Test passed!")
-o3d.io.write_point_cloud("data/oni_Open3D.xyz", xyzn)
-print(np.asarray(xyzn.points))
+o3d.io.write_triangle_mesh("data/out_Open3D.off", offmesh)
+print(offmesh)
+print('Vertices:')
+print(np.asarray(offmesh.vertices))
+print('Triangles:')
+print(np.asarray(offmesh.triangles))
+
 print("Visualizing point cloud ...")
-print("Press 'n' to see normals and '+/-' to change size.")
-o3d.visualization.draw_geometries([xyzn])
+print("Press 'w' to see wireframe (mesh) and 'b' to switch back and front.")
+print("Try to render a mesh with normals (exist: " +
+        str(offmesh.has_vertex_normals()) + ") and colors (exist: " +
+        str(offmesh.has_vertex_colors()) + ")")
+o3d.visualization.draw_geometries([offmesh])
 print("Visualization works!")
 quit()
