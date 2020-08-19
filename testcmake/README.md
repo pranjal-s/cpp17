@@ -23,3 +23,18 @@ To build, run and clean the program with CMake, we can use `cmakecompile.sh`:
 ```bash
 ./cmakecompile.sh
 ```
+
+Installation:
+```bash
+sudo apt remove cmake
+wget https://github.com/Kitware/CMake/releases/download/v3.18.1/cmake-3.18.1-Linux-x86_64.sh
+sudo cp cmake-3.18.1-Linux-x86_64.sh /opt/
+cd /opt/
+chmod +x cmake-3.18.1-Linux-x86_64.sh
+sudo bash cmake-3.18.1-Linux-x86_64.sh
+y
+y
+sudo ln -s /opt/cmake-3.18.1-Linux-x86_64/bin/* /usr/local/bin/
+cd ~
+cmake --version
+```

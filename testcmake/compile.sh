@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build commands
-g++ -o build/main src/include.cpp src/main.cpp -I./include -std=c++11
+g++ -std=c++11 -o build/main src/include.cpp src/main.cpp -I./include
 
 # Run executable
 build/main
