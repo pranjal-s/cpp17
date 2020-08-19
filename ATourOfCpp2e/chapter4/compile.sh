@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Remove if present previously generated executable
-rm -f a
-
 # Go to source directory
 cd src
 
@@ -18,5 +15,8 @@ rm *.o
 # Run executable
 cd ..
 ./a
+
+# Remove generated executable
+rm a
 
 exit 0

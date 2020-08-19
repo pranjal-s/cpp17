@@ -15,6 +15,12 @@ struct Vector {
 void vector_init(Vector&, int);
 int sum_sz(Vector, Vector&, Vector*);
 
+// Classes are concepts introduced in C++ on top of C enabling encapsulation
+// Encapsulation prevents people who work on your code from making mistakes,
+// by making sure that they only access things they're supposed to access.
+// Encapsulation is a process of combining data members and functions
+// in a single unit called class.
+
 class Vector2 {
   public: // member functions
     Vector2(int s):elem{new double[s]}, sz{s} { } // constructor with initialization (vector_init)
