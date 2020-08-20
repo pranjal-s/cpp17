@@ -2,14 +2,15 @@
 # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
 #
 # CGAL-5.0.3 Tutorial
-# A simple program to read, visualize and write xyzn point set with Open3D
+# A simple program to read, visualize and write geometry files with Open3D
 # for analysis with CGAL in C++
-# Source: Pranjal Singh, pranjal.officemail@gmail.com, Aug 2020
+# Author: Pranjal Singh, pranjal.officemail@gmail.com, Aug 2020
+# Source: https://github.com/pranjal-s/cpp17/blob/master/CGAL-5.0.3/open3d-0.9/off.py
 """
-CGAL Point Cloud Visualizer
+CGAL OFF Mesh Visualizer
 ========================================================
 
-xyzn files (positions and normals) are produced by CGAL with write_xyz_points.
+off files (positions and triangles) are produced by CGAL with Complex_2_in_triangulation_3_file_writer.
 
 Open3D
 -----------
@@ -35,7 +36,7 @@ print(np.asarray(offmesh.vertices))
 print('Triangles:')
 print(np.asarray(offmesh.triangles))
 
-print("Visualizing point cloud ...")
+print("Visualizing mesh ...")
 print("Press 'w' to see wireframe (mesh) and 'b' to switch back and front.")
 print("Try to render a mesh with normals (exist: " +
         str(offmesh.has_vertex_normals()) + ") and colors (exist: " +
