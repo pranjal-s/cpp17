@@ -1,0 +1,3 @@
+# Chapter 3.1.2: Newton’s recursive algorithm 
+
+Unlike obtaining coefficients for peicewise polynomial approximation of a function via Vandermonde matrix, V i.e. a = V<sup>-1</sup>b, we can obtain it via **Newton interpolation** - leading to a massive reduction in asymptotic computational complexity from O(n<sup>3</sup>) to O(n<sup>2</sup>) using the concept of upper-triangulation of the variable matrix.
