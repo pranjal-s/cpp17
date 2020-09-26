@@ -1,6 +1,6 @@
 // A simple program to read and write off mesh object file format with CGAL
 // for visualization with Open3D in python
-// Source: https://doc.cgal.org/latest/Polyhedron/index.html
+// Source: https://doc.cgal.org/latest/Surface_mesher/index.html
 
 #include <CGAL/Surface_mesh_default_triangulation_3.h>
 #include <CGAL/Complex_2_in_triangulation_3.h>

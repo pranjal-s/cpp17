@@ -1,0 +1,81 @@
+// A program to read xyz point set (position) and write off file with CGAL
+// Visualization with Open3D in python
+// Source: https://doc.cgal.org/latest/Advancing_front_surface_reconstruction/index.html#Chapter_Advancing_Front_Surface_Reconstruction
+
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <CGAL/Simple_cartesian.h>
+#include <CGAL/Advancing_front_surface_reconstruction.h>
+#include <CGAL/tuple.h>
+#include <boost/lexical_cast.hpp>
+typedef CGAL::Simple_cartesian<double> K;
+typedef K::Point_3  Point_3;
+typedef std::array<std::size_t,3> Facet;
+namespace std {
+  std::ostream&
+  operator<<(std::ostream& os, const Facet& f)
+  {
+    os << "3 " << f[0] << " " << f[1] << " " << f[2];
+    return os;
+  }
+}
+
+struct Perimeter {
+  double bound;
+  Perimeter(double bound)
+    : bound(bound)
+  {}
+  template <typename AdvancingFront, typename Cell_handle>
+  double operator() (const AdvancingFront& adv, Cell_handle& c,
+                     const int& index) const
+  {
+    // bound == 0 is better than bound < infinity
+    // as it avoids the distance computations
+    if(bound == 0){
+      return adv.smallest_radius_delaunay_sphere (c, index);
+    }
+    // If perimeter > bound, return infinity so that facet is not used
+    double d  = 0;
+    d = sqrt(squared_distance(c->vertex((index+1)%4)->point(),
+                              c->vertex((index+2)%4)->point()));
+    if(d>bound) return adv.infinity();
+    d += sqrt(squared_distance(c->vertex((index+2)%4)->point(),
+                               c->vertex((index+3)%4)->point()));
+    if(d>bound) return adv.infinity();
+    d += sqrt(squared_distance(c->vertex((index+1)%4)->point(),
+                               c->vertex((index+3)%4)->point()));
+    if(d>bound) return adv.infinity();
+    // Otherwise, return usual priority value: smallest radius of
+    // delaunay sphere
+    return adv.smallest_radius_delaunay_sphere (c, index);
+  }
+};
+
+int main(int argc, char* argv[])
+{
+  std::ifstream in((argc>1)?argv[1]:"data/atoms.xyz");
+  double per = (argc>2)?boost::lexical_cast<double>(argv[2]):0;
+  std::vector<Point_3> points;
+  std::vector<Facet> facets;
+  std::string header;
+  in >> header;
+  std::istream_iterator<Point_3> in_points_begin(in);
+  std::istream_iterator<Point_3> in_points_end;
+  std::copy(in_points_begin, in_points_end, std::back_inserter(points));
+  Perimeter perimeter(per);
+  CGAL::advancing_front_surface_reconstruction(points.begin(),
+                                               points.end(),
+                                               std::back_inserter(facets),
+                                               perimeter);
+  std::ofstream outoff;
+  outoff.open ("data/atoms_CGAL.off");
+  outoff << "OFF\n" << points.size() << " " << facets.size() << " 0\n";
+  std::copy(points.begin(),
+            points.end(),
+            std::ostream_iterator<Point_3>(outoff, "\n"));
+  std::copy(facets.begin(),
+            facets.end(),
+            std::ostream_iterator<Facet>(outoff, "\n"));
+  return 0;
+}

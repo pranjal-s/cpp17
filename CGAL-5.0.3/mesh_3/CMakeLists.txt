@@ -7,13 +7,13 @@ project(points_and_segments)
 # Build Type Release for high optimization and no debugging
 set(CMAKE_BUILD_TYPE Release)
 
-# Compiler macro: g++ for C++
-set(CMAKE_C_COMPILER "gcc")
-set(CMAKE_CXX_COMPILER "g++")
+# Compiler macro: Minimum v6.3, here I have v6.5 with -6
+set(CMAKE_C_COMPILER "gcc-6")
+set(CMAKE_CXX_COMPILER "g++-6")
 
 # compiler flags:
-# set the C++11 standard
-set(CMAKE_CXX_STANDARD 11)
+# set the minimum C++14 standard
+set(CMAKE_CXX_STANDARD 14)
 
 # the build target executable:
 set(TARGET main)
