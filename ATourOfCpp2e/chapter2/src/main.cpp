@@ -3,14 +3,15 @@
    Chapter 2: User-Defined Types.
 ------------------------------------------------------------------------- */
 
+// Includes
 #include <iostream>
-#include "udts.h"
+#include "udts.hpp"
 
+// Namespaces
 using namespace std;
 
-int main()
-{
-  cout << "Hello World!" << endl;
+// Driver
+int main(int argc, char* argv[]) {
 
   int s = 3;
   Vector v;
@@ -67,21 +68,7 @@ int main()
     cout << v3[i].p << '\n';
 
   for (auto i=0; i!=s; ++i)
-    cout << v3[i].i << '\n'; // this doesn't throw error, which is NOT good
-
-/*
-  Vector4 v4(s,num);
-
-  (v4.type()==num)?printf("NUM\n"):printf("PTR\n");
-
-  if (v4.type()==num) {
-    v4[0] = head->data; v4[1] = second->data; v4[2] = third->data;
-  } else {
-    v4[0] = head; v4[1] = second; v4[2] = third;
-  }
-
-  for (auto i=0; i!=s; ++i)
-    cout << v4[i] << '\n';
-*/
+    cout << v3[i].i << '\n';
+  
   return 0;
 }
