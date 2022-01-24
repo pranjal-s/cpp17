@@ -74,8 +74,9 @@ int main(int argc, char* argv[]) {
   // Array and pointer declaration
   char v[6] = {0,1,2,3,4,5}; // [] = 'array of'
   char* p; // * = pointer to
+  
   // Array and pointer expression
-  char* p = &v[3]; // &= address of; p points to v’s fourth element
+  p = &v[3]; // &= address of; p points to v’s fourth element
   char x = *p; // *= contents of; *p is the object that p points to,
   // that object is of type char and is being assigned to x
 
@@ -87,8 +88,15 @@ int main(int argc, char* argv[]) {
   r = r2; // yy read through r2, x written through r: xx becomes 33
   cout << xx << '\n';
 
-  // Copy
+  // Array is contiguous
   int v1[10] = {0,1,2,3,4,5,6,7,8,9};
+  int* vptr = v1; // vptr points to beginning of array v1
+  for (int i = 0; i < 10; ++i) {
+    cout << *(vptr+i) << " "; // increment pointer
+  }
+  cout << endl;
+
+  // Copy
   int v2[10]; // can't just have v2[]
   for (auto i=0; i!=10; ++i) // auto infers type from the assigned value
     v2[i]=v1[i];

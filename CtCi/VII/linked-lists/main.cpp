@@ -17,6 +17,8 @@ struct Node {
 
 // Driver
 int main(int argc, char* argv[]) {
+
+  // 3 element linked list
   Node* head = new Node();
   Node* second = new Node();
   Node* third = new Node();
