@@ -14,7 +14,7 @@ rm *.o
 
 # Run executable
 cd ..
-mpirun -np 3 ./a
+mpirun -np 4 ./a
 
 # Remove generated executable
 rm a
